@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Simple", "0_Simple", "{6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_Utilities", "1_Utilities", "{2B85BC8C-BF5A-4CF4-8460-58DC35AC07B3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "deviceQuery", "1_Utilities\deviceQuery\deviceQuery_vs2019.vcxproj", "{48030DAD-5FFE-4F47-896E-9304E8C8265B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addition", "0_Simple\addition\addition.vcxproj", "{43EC6FCC-5AFA-4605-A29C-D2992DCBBFC4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addition2d", "0_Simple\addition2d\addition2d.vcxproj", "{CAF35FBC-F9EE-4477-8F0F-10EB7A76F6E8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "alignment", "0_Simple\memoryAlignement\alignment.vcxproj", "{493A267A-DB55-45C9-BE92-21A925639379}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "convolution", "0_Simple\convolution\convolution.vcxproj", "{1684DBC1-D9B3-4D5C-A9AB-9AC7A338E395}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "streams", "0_Simple\streams\streams.vcxproj", "{62D431E2-2174-4846-9B44-267A7555E437}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sgemm", "0_Simple\sgemm\sgemm.vcxproj", "{DD9D4519-7E90-405E-B4F5-34B46F070CAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48030DAD-5FFE-4F47-896E-9304E8C8265B}.Debug|x64.ActiveCfg = Debug|x64
+		{48030DAD-5FFE-4F47-896E-9304E8C8265B}.Debug|x64.Build.0 = Debug|x64
+		{48030DAD-5FFE-4F47-896E-9304E8C8265B}.Release|x64.ActiveCfg = Release|x64
+		{48030DAD-5FFE-4F47-896E-9304E8C8265B}.Release|x64.Build.0 = Release|x64
+		{43EC6FCC-5AFA-4605-A29C-D2992DCBBFC4}.Debug|x64.ActiveCfg = Debug|x64
+		{43EC6FCC-5AFA-4605-A29C-D2992DCBBFC4}.Debug|x64.Build.0 = Debug|x64
+		{43EC6FCC-5AFA-4605-A29C-D2992DCBBFC4}.Release|x64.ActiveCfg = Release|x64
+		{43EC6FCC-5AFA-4605-A29C-D2992DCBBFC4}.Release|x64.Build.0 = Release|x64
+		{CAF35FBC-F9EE-4477-8F0F-10EB7A76F6E8}.Debug|x64.ActiveCfg = Debug|x64
+		{CAF35FBC-F9EE-4477-8F0F-10EB7A76F6E8}.Debug|x64.Build.0 = Debug|x64
+		{CAF35FBC-F9EE-4477-8F0F-10EB7A76F6E8}.Release|x64.ActiveCfg = Release|x64
+		{CAF35FBC-F9EE-4477-8F0F-10EB7A76F6E8}.Release|x64.Build.0 = Release|x64
+		{493A267A-DB55-45C9-BE92-21A925639379}.Debug|x64.ActiveCfg = Debug|x64
+		{493A267A-DB55-45C9-BE92-21A925639379}.Debug|x64.Build.0 = Debug|x64
+		{493A267A-DB55-45C9-BE92-21A925639379}.Release|x64.ActiveCfg = Release|x64
+		{493A267A-DB55-45C9-BE92-21A925639379}.Release|x64.Build.0 = Release|x64
+		{1684DBC1-D9B3-4D5C-A9AB-9AC7A338E395}.Debug|x64.ActiveCfg = Debug|x64
+		{1684DBC1-D9B3-4D5C-A9AB-9AC7A338E395}.Debug|x64.Build.0 = Debug|x64
+		{1684DBC1-D9B3-4D5C-A9AB-9AC7A338E395}.Release|x64.ActiveCfg = Release|x64
+		{1684DBC1-D9B3-4D5C-A9AB-9AC7A338E395}.Release|x64.Build.0 = Release|x64
+		{62D431E2-2174-4846-9B44-267A7555E437}.Debug|x64.ActiveCfg = Debug|x64
+		{62D431E2-2174-4846-9B44-267A7555E437}.Debug|x64.Build.0 = Debug|x64
+		{62D431E2-2174-4846-9B44-267A7555E437}.Release|x64.ActiveCfg = Release|x64
+		{62D431E2-2174-4846-9B44-267A7555E437}.Release|x64.Build.0 = Release|x64
+		{DD9D4519-7E90-405E-B4F5-34B46F070CAB}.Debug|x64.ActiveCfg = Debug|x64
+		{DD9D4519-7E90-405E-B4F5-34B46F070CAB}.Debug|x64.Build.0 = Debug|x64
+		{DD9D4519-7E90-405E-B4F5-34B46F070CAB}.Release|x64.ActiveCfg = Release|x64
+		{DD9D4519-7E90-405E-B4F5-34B46F070CAB}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{48030DAD-5FFE-4F47-896E-9304E8C8265B} = {2B85BC8C-BF5A-4CF4-8460-58DC35AC07B3}
+		{43EC6FCC-5AFA-4605-A29C-D2992DCBBFC4} = {6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}
+		{CAF35FBC-F9EE-4477-8F0F-10EB7A76F6E8} = {6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}
+		{493A267A-DB55-45C9-BE92-21A925639379} = {6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}
+		{1684DBC1-D9B3-4D5C-A9AB-9AC7A338E395} = {6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}
+		{62D431E2-2174-4846-9B44-267A7555E437} = {6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}
+		{DD9D4519-7E90-405E-B4F5-34B46F070CAB} = {6A5D66B1-70FD-4D7A-B2BB-CFBA63329B7D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F3A90096-8947-4431-886E-E14AD44D47F1}
+	EndGlobalSection
+EndGlobal
