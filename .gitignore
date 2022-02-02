@@ -1,0 +1,12 @@
+**/.vs/
+**/.vscode/
+
+bin/
+!bin/win64/Debug/freeglut.dll
+!bin/win64/Debug/glew64.dll
+!bin/win64/Release/freeglut.dll
+!bin/win64/Release/glew64.dll
+
+**/x64
+/common/data/
+!/common/lib/x64
