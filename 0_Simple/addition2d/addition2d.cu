@@ -38,7 +38,7 @@ __global__ void additionKernel(float* a, size_t a_pitch, float* res, size_t res_
 	int x = blockIdx.x * blockDim.x + threadIdx.x;
 	int y = blockIdx.y * blockDim.y + threadIdx.y;
 
-	res[x + y * res_pitch] = a[x + y * a_pitch] + 11.f;
+	res[x + y * res_pitch / sizeof(float)] = a[x + y * a_pitch / sizeof(float)] + 11.f;
 }
 
 
