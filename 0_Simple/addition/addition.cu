@@ -32,7 +32,7 @@ void randomInit(float* data, int nb_elements) {
 
 __global__ void additionKernel(float* a, float* res)
 {
-	int index = blockIdx.x * BLOCK_X + threadIdx.x;
+	int index = blockIdx.x * blockDim.x + threadIdx.x;
 	res[index] = a[index] + 11.f;
 }
 
