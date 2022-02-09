@@ -11,6 +11,9 @@
 #include <helper_functions.h>
 
 
+#include "device_launch_parameters.h"
+
+
 #define XMAX 2048
 #define YMAX 2048
 #define BLOCK_X 16
@@ -32,9 +35,8 @@ void randomInit(float* data, int nb_elements) {
 
 __global__ void additionKernel(float* a, size_t a_pitch, float* res, size_t res_pitch)
 {
-	//TO DO  b[i][j] = a[i][j] + 11.f
-	int x =
-	int y =
+	int x = blockIdx.x * blockDim.x + threadIdx.x;
+	int y = blockIdx.y * blockDim.y + threadIdx.y;
 
 	res[x + y * res_pitch] = a[x + y * a_pitch] + 11.f;
 }
@@ -57,22 +59,20 @@ extern "C" void function(
 	float* device_a;
 	size_t device_a_pitch;
 
-	//TO DO : 2D allocation of matrix a
-	
+	cudaMallocPitch(&device_a, &device_a_pitch, x_nb_elem * sizeof(float), y_nb_elem);
 
 	float* device_res;
 	size_t device_res_pitch;
 
-	//TO DO : 2D allocation of matrix res
-	
+	cudaMallocPitch(&device_res, &device_res_pitch, x_nb_elem * sizeof(float), y_nb_elem);
 
 	// data transfer from host_a to device_a (from host to device)
-	// TO DO : cudaMemcpy2D();
+	size_t host_a_pitch = x_nb_elem * sizeof(float);
+	cudaMemcpy2D(device_a, device_a_pitch, host_a, host_a_pitch, x_nb_elem * sizeof(float), y_nb_elem, cudaMemcpyHostToDevice);
 	
-
 	// CUDA grid setting
 	dim3 block(BLOCK_X, BLOCK_Y);
-	dim3 grid(  ...  );
+	dim3 grid(XMAX / BLOCK_X, YMAX / BLOCK_Y);
 
 	// Record the start event
 	checkCudaErrors(cudaEventRecord(start));
@@ -80,8 +80,7 @@ extern "C" void function(
 	// kernel execution ('run' times)
 	for (int i = 0; i < run; i++)
 	{
-		// TO DO : kernel call
-		
+		additionKernel<<<grid, block>>>(device_a, device_a_pitch, device_res, device_res_pitch);
 	}
 
 	// Record the stop event
@@ -95,8 +94,8 @@ extern "C" void function(
 	printf("kernel execution time : %f (ms)\n", msecTotal);
 
 	// data transfer from device_res to host_res (from device to host)
-	// TO DO : cudaMemcpy
-	
+	size_t host_res_pitch = x_nb_elem * sizeof(float);
+	cudaMemcpy2D(host_res, host_res_pitch, device_res, device_res_pitch, x_nb_elem * sizeof(float), y_nb_elem, cudaMemcpyDeviceToHost);
 
 	// free memory
 	cudaFree(device_a);
