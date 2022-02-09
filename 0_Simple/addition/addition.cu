@@ -11,6 +11,9 @@
 #include <helper_functions.h>
 
 
+#include "device_launch_parameters.h"
+
+
 #define XMAX 2048
 #define BLOCK_X 256
 
@@ -29,7 +32,7 @@ void randomInit(float* data, int nb_elements) {
 
 __global__ void additionKernel(float* a, float* res)
 {
-	int index =   // TO DO : find what index must be
+	int index = blockIdx.x * BLOCK_X + threadIdx.x;
 	res[index] = a[index] + 11.f;
 }
 
@@ -46,18 +49,17 @@ extern "C" void function(float* host_res, float* host_a, int nb_elements, int ru
 
 	// allocation of matrices 'a' and 'res' on device
 	float* device_a;
-	// TO DO : cudaMalloc
 	size_t size = nb_elements * sizeof(float);
+	cudaMalloc(&device_a, size);
 
 	float* device_res;
-	// TO DO : cudaMalloc
+	cudaMalloc(&device_res, size);
 
 	// data transfer from host_a to device_a (from host to device)
-	// TO DO : cudaMemcpy
+	cudaMemcpy(device_a, host_a, size, cudaMemcpyHostToDevice);
 
-	// TO DO : CUDA grid setting
 	dim3 block(BLOCK_X); // number of threads along the x dimension of each block
-	dim3 grid(...);
+	dim3 grid(XMAX / BLOCK_X);
 
 	// Record the start event
 	checkCudaErrors(cudaEventRecord(start));
@@ -65,8 +67,7 @@ extern "C" void function(float* host_res, float* host_a, int nb_elements, int ru
 	// kernel execution ('run' times)
 	for (int i = 0; i < run; i++)
 	{
-		// TO DO : kernel call
-		
+		additionKernel<<<grid, block>>>(device_a, device_res);
 	}
 
 	// Record the stop event
@@ -80,7 +81,7 @@ extern "C" void function(float* host_res, float* host_a, int nb_elements, int ru
 	printf("kernel execution time : %f (ms)\n", msecTotal);
 
 	// data transfer from device_res to host_res (from device to host)
-	// TO DO : cudaMemcpy
+	cudaMemcpy(host_res, device_res, size, cudaMemcpyDeviceToHost);
 
 	// free memory
 	cudaFree(device_a);
