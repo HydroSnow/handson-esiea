@@ -11,6 +11,9 @@
 #include <helper_functions.h>
 
 
+#include "device_launch_parameters.h"
+
+
 #define XMAX 4008
 #define YMAX 4008
 #define BLOCK_X 16
@@ -36,9 +39,15 @@ __global__ void kernel(
 	int x_offset, int y_offset)
 {
 	int x = threadIdx.x + blockIdx.x * BLOCK_X + x_offset;
+	if (x >= XMAX) {
+		return;
+	}
 	int y = threadIdx.y + blockIdx.y * BLOCK_Y + y_offset;
-
-	res[x + y * res_pitch] = a[x + y * a_pitch] + 11.f;
+	if (y >= YMAX) {
+		return;
+	}
+	
+	res[x + y * a_pitch] = a[x + y * a_pitch] + 11.f;
 }
 
 
@@ -80,7 +89,7 @@ extern "C" void function(
 
 	// CUDA grid setting
 	dim3 block(BLOCK_X, BLOCK_Y);
-	dim3 grid(...);
+	dim3 grid((XMAX + BLOCK_X - 1) / BLOCK_X, (YMAX + BLOCK_Y - 1) / BLOCK_Y);
 
 	// Record the start event
 	checkCudaErrors(cudaEventRecord(start));
