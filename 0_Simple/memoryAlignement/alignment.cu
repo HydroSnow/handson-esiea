@@ -47,7 +47,7 @@ __global__ void kernel(
 		return;
 	}
 	
-	res[x + y * a_pitch] = a[x + y * a_pitch] + 11.f;
+	res[x + y * res_pitch] = a[x + y * a_pitch] + 11.f;
 }
 
 
